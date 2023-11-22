@@ -10,24 +10,25 @@
   margin: 0;
 overflow-y: scroll;
   line-height: 1.42em;
-  color:#A7A1AE;
-  background-color:black;
+  color:whitesmoke;
+  background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+  /* background-color:black;
   background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 .bookings-title{
     font-weight: bold;
 	  font-size: 3em;
   text-align: left;
   color: white;
-  text-shadow: 0 0 10px rgb(255, 0, 0),
-        0 0 20px rgb(255, 0, 0),
-        0 0 40px rgb(255, 0, 0),
-        0 0 80px rgb(230, 0, 0),
-        0 0 120px rgb(255, 0, 0),
-        0 0 110px rgb(255, 0, 0);
+  text-shadow: 0 0 10px rgb(61, 121, 176),
+  0 0 20px rgb(61, 121, 176),
+  0 0 40px rgb(61, 121, 176),
+  0 0 80px rgb(35, 66, 164),
+  0 0 120px rgb(61, 121, 176),
+  0 0 110px rgb(61, 121, 176);
 }
 .search-box{
     width: fit-content;
@@ -45,9 +46,9 @@ overflow-y: scroll;
     outline: none;
     border-radius: 50%;
     transition: all .5s ease-in-out;
-    background-color: #c40000;
+    background-color: rgb(26, 48, 121);
   
-    color:#fff;
+    color:transparent;
   }
   .input-search::placeholder{
     
@@ -74,6 +75,7 @@ overflow-y: scroll;
   }
   .btn-search:focus ~ .input-search{
     width: 300px;
+    color: white;
     border-radius: 0px;
     background-color: transparent;
     border-bottom:1px solid rgba(255,255,255,.5);
@@ -82,6 +84,7 @@ overflow-y: scroll;
   .btn-search:focus ~ .input-search::placeholder{color: rgba(255,255,255,.5);}
   .input-search:focus{
     width: 300px;
+    color: white;
     border-radius: 0px;
     background-color: transparent;
     border-bottom:1px solid rgba(255,255,255,.5);
@@ -95,12 +98,12 @@ overflow-y: scroll;
 	  font-size: 1em;
   text-align: left;
   color: white;
-  text-shadow: 0 0 10px rgb(255, 0, 0),
-        0 0 20px rgb(255, 0, 0),
-        0 0 40px rgb(255, 0, 0),
-        0 0 80px rgb(230, 0, 0),
-        0 0 120px rgb(255, 0, 0),
-        0 0 110px rgb(255, 0, 0);
+  text-shadow: 0 0 10px rgb(61, 121, 176),
+  0 0 20px rgb(61, 121, 176),
+  0 0 40px rgb(61, 121, 176),
+  0 0 80px rgb(35, 66, 164),
+  0 0 120px rgb(61, 121, 176),
+  0 0 110px rgb(61, 121, 176);
   
 }
 
@@ -133,22 +136,22 @@ overflow-y: scroll;
 	  /* background-color: #323C50; */
       backdrop-filter: blur(5px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgb(63 15 15 / 75%);
+    background-color: rgb(26, 48, 121);
 }
 
 /* Background-color of the even rows */
 .table-container tbody tr:nth-child(even) {
     backdrop-filter: blur(5px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgb(24 14 14 / 71%);
+    background-color: rgba(24, 14, 14, 0.658);
 }
 
 
 
-.table-container  td:first-child { color: orange; }
+.table-container  td:first-child { color: cyan; }
 
 .table-container tbody tr:hover {
-   background-color: #530000;
+   background-color: rgb(20, 37, 94);
 -webkit-box-shadow: 0 6px 6px -6px #0E1119;
 	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
 	        box-shadow: 0 6px 6px -6px #0E1119;
@@ -156,11 +159,11 @@ overflow-y: scroll;
 
 
 .table-container td:hover {
-  background-color: #c40000;
+  background-color: rgb(26, 48, 121);
   color: whitesmoke;
   font-weight: bold;
   
-  box-shadow: #8b2222 -1px 1px, #8b2222 -2px 2px, #8b2222 -3px 3px, #8b2222 -4px 4px, #8b2222 -5px 5px, #8b2222 -6px 6px;
+  box-shadow: rgb(20, 37, 94) -1px 1px, rgb(20, 37, 94) -2px 2px, rgb(20, 37, 94) -3px 3px, rgb(20, 37, 94) -4px 4px, rgb(20, 37, 94) -5px 5px, rgb(20, 37, 94) -6px 6px;
   transform: translate3d(6px, -6px, 0);
   
   transition-delay: 0s;

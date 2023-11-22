@@ -5,10 +5,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #080710;
+    flex-direction: column;
+    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+    /* background-color: #080710;
     background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover; */
+    
     
 }
 form{
@@ -31,11 +34,18 @@ form *{
 }
 form h3{
     font-size: 2.5vw;
+    letter-spacing: 5px;
     font-weight: bold;
     line-height: 42px;
     text-align: center;
+    color: white;
+    text-shadow: 0 0 10px rgb(61, 121, 176),
+    0 0 20px rgb(61, 121, 176),
+    0 0 40px rgb(61, 121, 176),
+    0 0 80px rgb(35, 66, 164),
+    0 0 120px rgb(61, 121, 176),
+    0 0 110px rgb(61, 121, 176);
 }
-
 label{
     display: block;
     margin-top: 30px;
@@ -61,18 +71,21 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 3vw;
+
+
 }
 .login-glowing-btn {
     /* position: relative; */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #BC0001;
+    color: rgb(35, 66, 164);
     cursor: pointer;
-    margin: 1em;
+    margin-top: 1em;
     padding: .75em 2.5em;
-    border: 0.15em solid #BC0001;
+    border: 0.15em solid rgb(35, 66, 164);
     border-radius: 0.45em;
     background: none;
     perspective: 2em;
@@ -81,22 +94,22 @@ input{
     font-weight: 900;
     letter-spacing: 0.5em;
   
-    -webkit-box-shadow: inset 0px 0px 0.5em 0px #BC0001,
-      0px 0px 0.5em 0px #BC0001;
-    -moz-box-shadow: inset 0px 0px 0.5em 0px #BC0001,
-      0px 0px 0.5em 0px #BC0001;
-    box-shadow: inset 0px 0px 0.5em 0px #BC0001,
-      0px 0px 0.5em 0px #BC0001;
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
+      0px 0px 0.5em 0px rgb(35, 66, 164);
+    -moz-box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
+      0px 0px 0.5em 0px rgb(35, 66, 164);
+    box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
+      0px 0px 0.5em 0px rgb(35, 66, 164);
     animation: border-flicker 2s linear infinite;
   }
   .login-glowing-txt {
     float: left;
     margin-right: -0.8em;
     -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-      0 0 0.45em #BC0001;
+      0 0 0.45em rgb(35, 66, 164);
     -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-      0 0 0.45em #BC0001;
-    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em #BC0001;
+      0 0 0.45em rgb(35, 66, 164);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em rgb(35, 66, 164);
     animation: text-flicker 3s linear infinite;
   }
   
@@ -105,19 +118,7 @@ input{
     animation: faulty-flicker 2s linear infinite;
   }
   
-  .login-glowing-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.7;
-    filter: blur(1em);
-    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
-    background: #BC0001;
-    pointer-events: none;
-  }
+
   .login-glowing-btn::after {
     content: "";
     position: absolute;
@@ -127,8 +128,8 @@ input{
     bottom: 0;
     opacity: 0;
     z-index: -1;
-    background-color: #BC0001;
-    box-shadow: 0 0 2em 0.2em #BC0001;
+    background-color: rgb(35, 66, 164);
+    box-shadow: 0 0 2em 0.2em rgb(35, 66, 164);
     transition: opacity 100ms linear;
   }
   

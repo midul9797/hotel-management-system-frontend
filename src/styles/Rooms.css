@@ -1,28 +1,25 @@
 .rooms-body{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     width: 100vw;
+    height: 100vh;
     margin: 0;
     line-height: 1.42em;
     overflow-y: scroll;
-    background-color:black;
-    background-image: url('../assets/loginBg.jpg');
-      background-repeat: no-repeat;
-      background-size: contain;
-    background-attachment: fixed;
+    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
     
 }
+
 .room-title{
   color: white;
-  
-  text-shadow: 0 0 10px rgb(255, 0, 0),
-        0 0 20px rgb(255, 0, 0),
-        0 0 40px rgb(255, 0, 0),
-        0 0 80px rgb(230, 0, 0),
-        0 0 120px rgb(255, 0, 0),
-        0 0 110px rgb(255, 0, 0);
+  text-shadow: 0 0 10px rgb(61, 121, 176),
+  0 0 20px rgb(61, 121, 176),
+  0 0 40px rgb(61, 121, 176),
+  0 0 80px #000eac,
+  0 0 120px rgb(61, 121, 176),
+  0 0 110px rgb(61, 121, 176);
 }
 .room{
     height: 15vh;
@@ -51,7 +48,8 @@
   margin-left: 6vw;
   background-color: red;
   border-radius: 50%;
-  box-shadow: 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 60px #f00, 0 0 70px #f00, 0 0 80px #f00;;
+  
+  box-shadow: 0 0 20px #f00, 0 0 50px #f00, 0 0 60px #f00, 0 0 70px #f00, 0 0 80px #f00;
 }
 .room-no{
   font-weight: bold;
@@ -60,10 +58,10 @@
   letter-spacing: 5px;
   margin: 10px;
   color: white;
-  text-shadow: 0 0 10px rgb(255, 0, 0),
-        0 0 20px rgb(255, 0, 0),
-        0 0 40px rgb(255, 0, 0),
-        0 0 80px rgb(230, 0, 0),
-        0 0 120px rgb(255, 0, 0),
-        0 0 110px rgb(255, 0, 0);
+  text-shadow: 0 0 10px rgb(61, 121, 176),
+  0 0 20px rgb(61, 121, 176),
+  0 0 40px rgb(61, 121, 176),
+  0 0 80px rgb(35, 66, 164),
+  0 0 120px rgb(61, 121, 176),
+  0 0 110px rgb(61, 121, 176);
 }

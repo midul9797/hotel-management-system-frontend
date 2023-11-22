@@ -7,16 +7,128 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import "../styles/NewBooking.css";
+import { Link } from "react-router-dom";
 
 const NewBooking = () => {
   const [current, setCurrent] = useState({ a: "customer", b: 0 });
-  const [custormer, setCustomer] = useState("process");
+  const [customer, setCustomer] = useState("process");
   const [booking, setBooking] = useState("wait");
   const [confirmation, setConfirmation] = useState("wait");
   const [done, setDone] = useState("wait");
   const [gender, setGender] = useState("");
   const [roomType, setRoomType] = useState("");
   const [bedType, setBedType] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [days, setDays] = useState(0);
+  const [rooms, setRooms] = useState(0);
+  const [roomNumbers, setRoomNumbers] = useState([]);
+  const handleCreateCustomer = () => {
+    fetch(
+      "https://hotel-delta-management-midul9797.vercel.app/api/v1/customers/create-customer",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          age: parseInt(age),
+          address,
+          gender,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((d) => {
+        if (d.success) handleCreateRoom();
+        else alert("Phone Number Already Exists");
+      });
+  };
+  const handleCreateRoom = () => {
+    fetch(
+      `https://hotel-delta-management-midul9797.vercel.app/api/v1/rooms/${roomType}/${bedType}/${rooms}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ customer_phone: phone }),
+      }
+    )
+      .then((res) => res.json())
+      .then((d) => {
+        setRoomNumbers(d.data);
+        if (d.success) handleCreateBooking(d.data);
+      });
+  };
+  const handleCreateBooking = (r) => {
+    fetch(
+      "https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings/create-booking",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          room_type: roomType,
+          rooms: parseInt(rooms),
+          bed_type: bedType,
+          customer_phone: phone,
+          days: parseInt(days),
+          roomNumbers: r,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((d) => {
+        console.log(
+          JSON.stringify({
+            room_type: roomType,
+            rooms: parseInt(rooms),
+            bed_type: bedType,
+            customer_phone: phone,
+            days: parseInt(days),
+            roomNumbers: r,
+          })
+        );
+        if (d.success) {
+          setCurrent({ a: "done", b: current.b + 1 });
+          setConfirmation("finish");
+          setDone("finish");
+        }
+      });
+  };
+  const handleConfirmation = async () => {
+    if (
+      name &&
+      age &&
+      phone &&
+      gender &&
+      days &&
+      roomType &&
+      rooms &&
+      bedType
+    ) {
+      fetch(
+        `https://hotel-delta-management-midul9797.vercel.app/api/v1/rooms/count-room/${roomType}/${bedType}/${rooms}`,
+        {
+          method: "GET",
+        }
+      )
+        .then((res) => res.json())
+        .then((d) => {
+          console.log(JSON.stringify({ customer_phone: phone }));
+
+          if (d.data === true) {
+            handleCreateCustomer();
+          } else alert("No Room Available");
+        });
+    }
+  };
   const steps = [
     {
       title: "First",
@@ -24,7 +136,12 @@ const NewBooking = () => {
         <form className="customer-form">
           <h3>Customer Details</h3>
           <label htmlFor="name">Name</label>
-          <input type="text" placeholder="Enter Name" id="name" />
+          <input
+            type="text"
+            placeholder="Enter Name"
+            id="name"
+            onBlur={(e) => setName(e.target.value)}
+          />
           <div
             style={{
               display: "flex",
@@ -34,7 +151,12 @@ const NewBooking = () => {
           >
             <div>
               <label htmlFor="age">Age</label>
-              <input type="number" placeholder="Enter Age" id="age" />
+              <input
+                type="number"
+                placeholder="Enter Age"
+                id="age"
+                onBlur={(e) => setAge(e.target.value)}
+              />
             </div>
             <div>
               <p htmlFor="gender-title" id="gender-title">
@@ -50,20 +172,30 @@ const NewBooking = () => {
                   alignItems: "center",
                 }}
               >
-                <Radio value={"male"} style={{ fontWeight: "normal" }}>
+                <Radio value={"Male"} style={{ fontWeight: "normal" }}>
                   Male
                 </Radio>
-                <Radio value={"female"} style={{ fontWeight: "normal" }}>
+                <Radio value={"Female"} style={{ fontWeight: "normal" }}>
                   Female
                 </Radio>
               </Radio.Group>
             </div>
           </div>
           <label htmlFor="phone">Phone No.</label>
-          <input type="text" placeholder="Enter Phone NO." id="phone" />
+          <input
+            type="text"
+            placeholder="Enter Phone NO."
+            id="phone"
+            onBlur={(e) => setPhone(e.target.value)}
+          />
 
           <label htmlFor="address">Address</label>
-          <input type="text" placeholder="Enter Address" id="address" />
+          <input
+            type="text"
+            placeholder="Enter Address"
+            id="address"
+            onBlur={(e) => setAddress(e.target.value)}
+          />
         </form>
       ),
     },
@@ -73,9 +205,19 @@ const NewBooking = () => {
         <form className="customer-form">
           <h3>Booking Details</h3>
           <label htmlFor="days">Staying Days</label>
-          <input type="number" placeholder="Enter Staying Days" id="days" />
+          <input
+            type="number"
+            placeholder="Enter Staying Days"
+            id="days"
+            onBlur={(e) => setDays(e.target.value)}
+          />
           <label htmlFor="rooms">Rooms</label>
-          <input type="number" placeholder="Enter Number of Rooms" id="rooms" />
+          <input
+            type="number"
+            placeholder="Enter Number of Rooms"
+            id="rooms"
+            onBlur={(e) => setRooms(e.target.value)}
+          />
           <div
             style={{
               display: "flex",
@@ -120,10 +262,10 @@ const NewBooking = () => {
                   alignItems: "center",
                 }}
               >
-                <Radio value={"single"} style={{ fontWeight: "normal" }}>
+                <Radio value={"Single"} style={{ fontWeight: "normal" }}>
                   Single
                 </Radio>
-                <Radio value={"double"} style={{ fontWeight: "normal" }}>
+                <Radio value={"Double"} style={{ fontWeight: "normal" }}>
                   Double
                 </Radio>
               </Radio.Group>
@@ -142,14 +284,14 @@ const NewBooking = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Customer Name : </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Customer Name :{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{name}</span>
           </div>
 
           <div
@@ -157,97 +299,86 @@ const NewBooking = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Phone NO. : </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Phone NO. :{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{phone}</span>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Age: </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Age:{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{age}</span>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Gender : </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Gender :{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{gender}</span>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Rooms: </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Rooms:{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{rooms}</span>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Staying Days : </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Staying Days :{" "}
             </span>
+            <span style={{ color: "white", fontWeight: "bold" }}>{days}</span>
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms"> Room Type : </span>
-            <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              {" "}
+              Room Type :{" "}
             </span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "250px",
-              margin: "5px",
-            }}
-          >
-            <span htmlFor="brooms">Checked In : </span>
             <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+              {roomType}
             </span>
           </div>
           <div
@@ -256,13 +387,15 @@ const NewBooking = () => {
               justifyContent: "space-between",
               alignItems: "center",
 
-              width: "250px",
+              width: "100%",
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Bed Type : </span>
+            <span htmlFor="brooms" style={{ color: "whitesmoke" }}>
+              Bed Type :{" "}
+            </span>
             <span style={{ color: "white", fontWeight: "bold" }}>
-              {"Midul"}
+              {bedType}
             </span>
           </div>
         </form>
@@ -276,7 +409,7 @@ const NewBooking = () => {
             theme={{
               token: {
                 colorText: "white",
-                colorInfo: "rgb(74 239 5 / 84%)",
+                colorInfo: "rgb(26, 48, 121)",
               },
             }}
           >
@@ -284,12 +417,48 @@ const NewBooking = () => {
               icon={<SmileOutlined />}
               title="Great, Booking completed Successfully"
               extra={
-                <button
-                  className="login-glowing-btn"
-                  style={{ margin: "auto " }}
-                >
-                  <span style={{ color: "white" }}>Home</span>
-                </button>
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span
+                      className="bookings-title"
+                      style={{ fontSize: "16px" }}
+                    >
+                      ROOMS
+                    </span>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        paddingLeft: "30px",
+                      }}
+                    >
+                      {roomNumbers !== undefined &&
+                        roomNumbers.map((room) => (
+                          <p
+                            key={room}
+                            style={{ fontWeight: "bold", padding: "5px" }}
+                          >
+                            {room}
+                          </p>
+                        ))}
+                    </div>
+                  </div>
+                  <Link to="/home">
+                    <button
+                      className="login-glowing-btn"
+                      style={{ margin: "auto " }}
+                    >
+                      <span style={{ color: "white" }}>Home</span>
+                    </button>
+                  </Link>
+                </div>
               }
             />
           </ConfigProvider>
@@ -307,9 +476,7 @@ const NewBooking = () => {
       setBooking("finish");
       setConfirmation("process");
     } else if (current.a === "confirmation") {
-      setCurrent({ a: "done", b: current.b + 1 });
-      setConfirmation("finish");
-      setDone("finish");
+      handleConfirmation();
     } else {
       setCurrent({ a: "finished", b: current.b });
       setDone("finish");
@@ -332,10 +499,10 @@ const NewBooking = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "red",
+          colorPrimary: "rgb(26, 48, 121)",
           colorSplit: "white",
           colorTextDisabled: "white",
-          colorText: "red",
+          colorText: "rgb(26, 48, 121)",
           colorTextTertiary: "white",
         },
       }}
@@ -344,10 +511,11 @@ const NewBooking = () => {
         <div className="booking-steps">
           <Steps
             current={current.b}
+            style={{ fontWeight: "bold" }}
             items={[
               {
                 title: "Customer Details",
-                status: custormer,
+                status: customer,
                 icon: <UserOutlined />,
               },
               {

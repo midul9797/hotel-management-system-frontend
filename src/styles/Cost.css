@@ -1,3 +1,3 @@
 .cost-container td:first-child { color: #A7A1AE; }
 .cost-container td:first-child:hover { color: white; }
-.cost-container td:nth-child(3) { color: orange; }
+.cost-container td:nth-child(3) { color: cyan; }

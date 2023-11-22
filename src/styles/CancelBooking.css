@@ -9,15 +9,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
+  
 overflow-y: scroll;
   line-height: 1.42em;
   color: white;
-  background-color:black;
+  background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+  /* background-color:black;
   background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 .cancel-details{
     height: 50vh;

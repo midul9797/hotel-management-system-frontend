@@ -5,10 +5,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #080710;
+    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+    /* background-color: #080710;
     background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover; */
     
 }
 .signup-form{
