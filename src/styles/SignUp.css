@@ -1,59 +1,61 @@
-
-.signup-background{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
-    /* background-color: #080710;
+.signup-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    109.6deg,
+    rgb(61, 121, 176) 11.3%,
+    rgb(35, 66, 164) 91.1%
+  );
+  /* background-color: #080710;
     background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
     background-size: cover; */
-    
 }
-.signup-form{
-    height: 75vh;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+.signup-form {
+  height: auto;
+  width: clamp(200px, 40vw, 400px);
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: clamp(5px, 2vw, 10px);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 clamp(15px, 5vw, 40px) rgba(8, 7, 16, 0.6);
+  padding: clamp(20px, 5vw, 50px) clamp(15px, 7vw, 35px);
 }
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
+form * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
 }
-.signup-form > h3{
-    margin: 0;
-    font-size: 2em;
-    font-weight: bolder;
-    line-height: 1em;
-    text-align: center;
+.signup-form > h3 {
+  margin: 0;
+  font-size: clamp(16px, 3vw, 28px);
+  font-weight: bolder;
+  line-height: clamp(10px, 2vw, 20px);
+  text-align: center;
 }
 
-.signup-form > label{
-    display: block;
-    margin-top: 1em;
-    font-size: 2.5vh;
-    font-weight: bold;
+.signup-form > label {
+  display: block;
+  margin-top: clamp(10px, 2vw, 20px);
+  font-size: clamp(12px, 2.5vw, 20px);
+  font-weight: bold;
 }
-.signup-form > input{
-    display: block;
-    height: 7vh;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 5px;
-    font-size: 2.3vh;
-    font-weight: 300;
+.signup-form > input {
+  display: block;
+  height: clamp(20px, 7vw, 40px);
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: clamp(2px, 1vw, 3px);
+  padding: 0 clamp(3px, 2vw, 10px);
+  margin-top: clamp(5px, 1vw, 10px);
+  font-size: clamp(12px, 2.3vw, 18px);
+  font-weight: 300;
 }
-::placeholder{
-    color: #e5e5e5d8;
+::placeholder {
+  color: #e5e5e5d8;
 }

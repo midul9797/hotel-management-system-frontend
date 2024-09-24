@@ -1,267 +1,259 @@
-
-.login-background{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
-    /* background-color: #080710;
-    background-image: url('../assets/loginBg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; */
-    
-    
+.login-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+    109.6deg,
+    rgb(61, 121, 176) 11.3%,
+    rgb(35, 66, 164) 91.1%
+  );
 }
-form{
-    height: 70vh;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(16, 7, 7, 0.6);
-    padding: 50px 35px;
-    
+form {
+  height: clamp(300px, 80vw, 400px);
+  width: clamp(200px, 40vw, 400px);
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: clamp(5px, 10vw, 15px);
+  backdrop-filter: blur(100px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 clamp(15px, 5vw, 40px) rgba(16, 7, 7, 0.6);
+  padding: clamp(20px, 3vw, 40px) clamp(25px, 35vw, 45px);
 }
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
+form * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
 }
-form h3{
-    font-size: 2.5vw;
-    letter-spacing: 5px;
-    font-weight: bold;
-    line-height: 42px;
-    text-align: center;
-    color: white;
-    text-shadow: 0 0 10px rgb(61, 121, 176),
-    0 0 20px rgb(61, 121, 176),
-    0 0 40px rgb(61, 121, 176),
-    0 0 80px rgb(35, 66, 164),
-    0 0 120px rgb(61, 121, 176),
-    0 0 110px rgb(61, 121, 176);
+form h3 {
+  font-size: clamp(16px, 4vw, 32px);
+  letter-spacing: clamp(1px, 1vw, 5px);
+  font-weight: bold;
+  line-height: clamp(10px, 2vw, 20px);
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 clamp(2px, 1vw, 5px) rgb(61, 121, 176),
+    0 0 clamp(3px, 1vw, 6px) rgb(61, 121, 176),
+    0 0 clamp(4px, 2vw, 7px) rgb(61, 121, 176),
+    0 0 clamp(5px, 4vw, 8px) rgb(35, 66, 164),
+    0 0 clamp(6px, 6vw, 9px) rgb(61, 121, 176),
+    0 0 clamp(7px, 8vw, 10px) rgb(61, 121, 176);
 }
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: bold;
+label {
+  display: block;
+  margin-top: clamp(20px, 5vw, 40px);
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: bold;
+  letter-spacing: clamp(1px, 1vw, 3px);
 }
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
+input {
+  display: block;
+  /* height: clamp(20px, 3vw, 40px); */
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: clamp(2px, 3vw, 4px);
+  padding: clamp(5px, 1.5vw, 10px) clamp(5px, 2vw, 15px);
+  margin-top: clamp(5px, 2vw, 15px);
+  font-size: clamp(12px, 3vw, 16px);
+  font-weight: 300;
 }
-::placeholder{
-    color: #e5e5e5;
+::placeholder {
+  color: #e5e5e5;
 }
 
-.login-btn-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 3vw;
-
-
+.login-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: clamp(10px, 3vw, 20px);
 }
 .login-glowing-btn {
-    /* position: relative; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(35, 66, 164);
-    cursor: pointer;
-    margin-top: 1em;
-    padding: .75em 2.5em;
-    border: 0.15em solid rgb(35, 66, 164);
-    border-radius: 0.45em;
-    background: none;
-    perspective: 2em;
-    font-family: "Raleway", sans-serif;
-    font-size: 1.1em;
-    font-weight: 900;
-    letter-spacing: 0.5em;
-  
-    -webkit-box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
-      0px 0px 0.5em 0px rgb(35, 66, 164);
-    -moz-box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
-      0px 0px 0.5em 0px rgb(35, 66, 164);
-    box-shadow: inset 0px 0px 0.5em 0px rgb(35, 66, 164),
-      0px 0px 0.5em 0px rgb(35, 66, 164);
-    animation: border-flicker 2s linear infinite;
-  }
-  .login-glowing-txt {
-    float: left;
-    margin-right: -0.8em;
-    -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-      0 0 0.45em rgb(35, 66, 164);
-    -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-      0 0 0.45em rgb(35, 66, 164);
-    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em rgb(35, 66, 164);
-    animation: text-flicker 3s linear infinite;
-  }
-  
-  .login-faulty-letter {
-    opacity: 0.5;
-    animation: faulty-flicker 2s linear infinite;
-  }
-  
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(35, 66, 164);
+  cursor: pointer;
+  margin-top: clamp(0.5px, 1vw, 1.5px);
+  padding: clamp(5px, 2vw, 10px) clamp(10px, 3vw, 20px);
+  border: 0.15em solid rgb(35, 66, 164);
+  border-radius: 0.45em;
+  background: none;
+  perspective: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(12px, 2.5vw, 20px);
+  font-weight: 900;
+  letter-spacing: 0.5em;
 
-  .login-glowing-btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    z-index: -1;
-    background-color: rgb(35, 66, 164);
-    box-shadow: 0 0 2em 0.2em rgb(35, 66, 164);
-    transition: opacity 100ms linear;
+  -webkit-box-shadow: inset 0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px
+      rgb(35, 66, 164),
+    0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px rgb(35, 66, 164);
+  -moz-box-shadow: inset 0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px
+      rgb(35, 66, 164),
+    0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px rgb(35, 66, 164);
+  box-shadow: inset 0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px rgb(35, 66, 164),
+    0px 0px clamp(0.25px, 0.5vw, 0.75px) 0px rgb(35, 66, 164);
+  animation: border-flicker 2s linear infinite;
+}
+.login-glowing-txt {
+  float: left;
+  margin-right: clamp(-0.4px, -0.8vw, -1.2px);
+  -webkit-text-shadow: 0 0 clamp(0.0625px, 0.125vw, 0.1875px)
+      hsl(0 0% 100% / 0.3),
+    0 0 clamp(0.225px, 0.45vw, 0.675px) rgb(35, 66, 164);
+  -moz-text-shadow: 0 0 clamp(0.0625px, 0.125vw, 0.1875px) hsl(0 0% 100% / 0.3),
+    0 0 clamp(0.225px, 0.45vw, 0.675px) rgb(35, 66, 164);
+  text-shadow: 0 0 clamp(0.0625px, 0.125vw, 0.1875px) hsl(0 0% 100% / 0.3),
+    0 0 clamp(0.225px, 0.45vw, 0.675px) rgb(35, 66, 164);
+  animation: text-flicker 3s linear infinite;
+}
+
+.login-faulty-letter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite;
+}
+
+.login-glowing-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: rgb(35, 66, 164);
+  box-shadow: 0 0 clamp(5px, 2vw, 10px) 0.2em rgb(35, 66, 164);
+  transition: opacity 100ms linear;
+}
+
+.login-glowing-btn:hover {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: none;
+  animation: none;
+  border: none;
+  border-radius: 0.45em;
+}
+
+.login-glowing-btn:hover .login-glowing-txt {
+  animation: none;
+}
+
+.login-glowing-btn:hover .login-faulty-letter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.login-glowing-btn:hover:before {
+  filter: blur(clamp(0.75px, 1.5vw, 2.25px));
+  opacity: 1;
+  border-radius: 0.45em;
+}
+
+.login-glowing-btn:hover:after {
+  opacity: 1;
+  border-radius: 0.45em;
+}
+
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
   }
-  
-  .login-glowing-btn:hover {
-    color: rgba(0, 0, 0, 0.8);
-    text-shadow: none;
-    animation: none;
-    border: none;
-    border-radius: 0.45em;
+  2% {
+    opacity: 0.1;
   }
-  
-  .login-glowing-btn:hover .login-glowing-txt {
-    animation: none;
+  4% {
+    opacity: 0.5;
   }
-  
-  .login-glowing-btn:hover .login-faulty-letter {
-    animation: none;
-    text-shadow: none;
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
     opacity: 1;
   }
-  
-  .login-glowing-btn:hover:before {
-    filter: blur(1.5em);
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+
+  87% {
     opacity: 1;
-    border-radius: 0.45em;
   }
-  
-  .login-glowing-btn:hover:after {
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+
+  2% {
     opacity: 1;
-    border-radius: 0.45em;
   }
-  
-  @keyframes faulty-flicker {
-    0% {
-      opacity: 0.1;
-    }
-    2% {
-      opacity: 0.1;
-    }
-    4% {
-      opacity: 0.5;
-    }
-    19% {
-      opacity: 0.5;
-    }
-    21% {
-      opacity: 0.1;
-    }
-    23% {
-      opacity: 1;
-    }
-    80% {
-      opacity: 0.5;
-    }
-    83% {
-      opacity: 0.4;
-    }
-  
-    87% {
-      opacity: 1;
-    }
+
+  8% {
+    opacity: 0.1;
   }
-  
-  @keyframes text-flicker {
-    0% {
-      opacity: 0.1;
-    }
-  
-    2% {
-      opacity: 1;
-    }
-  
-    8% {
-      opacity: 0.1;
-    }
-  
-    9% {
-      opacity: 1;
-    }
-  
-    12% {
-      opacity: 0.1;
-    }
-    20% {
-      opacity: 1;
-    }
-    25% {
-      opacity: 0.3;
-    }
-    30% {
-      opacity: 1;
-    }
-  
-    70% {
-      opacity: 0.7;
-    }
-    72% {
-      opacity: 0.2;
-    }
-  
-    77% {
-      opacity: 0.9;
-    }
-    100% {
-      opacity: 0.9;
-    }
+
+  9% {
+    opacity: 1;
   }
-  
-  @keyframes border-flicker {
-    0% {
-      opacity: 0.1;
-    }
-    2% {
-      opacity: 1;
-    }
-    4% {
-      opacity: 0.1;
-    }
-  
-    8% {
-      opacity: 1;
-    }
-    70% {
-      opacity: 0.7;
-    }
-    100% {
-      opacity: 1;
-    }
+
+  12% {
+    opacity: 0.1;
   }
-  
-  @media only screen and (max-width: 600px) {
-    .login-glowing-btn{
-      font-size: 1em;
-    }
+  20% {
+    opacity: 1;
   }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}

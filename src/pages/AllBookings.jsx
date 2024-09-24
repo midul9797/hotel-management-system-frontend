@@ -7,22 +7,16 @@ export default function AllBookings() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (search !== "") {
-      fetch(
-        `https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings/${search}`,
-        {
-          method: "GET",
-        }
-      )
+      fetch(`http://localhost:3000/api/v1/bookings/${search}`, {
+        method: "GET",
+      })
         .then((res) => res.json())
         .then((d) => setData(d.data));
     }
   };
 
   useEffect(() => {
-    fetch(
-      "https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings",
-      { method: "GET" }
-    )
+    fetch("http://localhost:3000/api/v1/bookings", { method: "GET" })
       .then((res) => res.json())
       .then((d) => setData(d.data));
   }, []);

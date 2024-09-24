@@ -13,16 +13,13 @@ export default function SignUp() {
   const handleSignUp = (e) => {
     e.preventDefault();
     if (code.toLowerCase() === "dbms") {
-      fetch(
-        "https://hotel-delta-management-midul9797.vercel.app/api/v1/admins/create-admin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, username, password }),
-        }
-      )
+      fetch("http://localhost:3000/api/v1/admins/create-admin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, username, password }),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data?.success === true) {
@@ -80,7 +77,7 @@ export default function SignUp() {
               S i <span className="login-faulty-letter">g n </span>U p
             </span>
           </button>
-          <p>
+          <p style={{ fontSize: "clamp(12px, 1.5vw, 18px)" }}>
             Already have an account?{" "}
             <Link
               to="/login"

@@ -1,122 +1,123 @@
-.step-booking-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
-    /* background-color:black;
+.step-booking-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    109.6deg,
+    rgb(61, 121, 176) 11.3%,
+    rgb(35, 66, 164) 91.1%
+  );
+  /* background-color:black;
     background-image: url('../assets/loginBg.jpg');
       background-repeat: no-repeat;
       background-size: cover; */
 }
-.booking-steps{
-    width: 70vw;
+.booking-steps {
+  width: 70vw;
 }
-.booking-steps-title{
-    margin-top: -5px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 0 10px rgb(61, 121, 176),
-    0 0 20px rgb(61, 121, 176),
-    0 0 40px rgb(61, 121, 176),
-    0 0 80px rgb(35, 66, 164),
-    0 0 120px rgb(61, 121, 176),
-    0 0 110px rgb(61, 121, 176);
+.booking-steps-title {
+  margin-top: -5px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgb(61, 121, 176), 0 0 20px rgb(61, 121, 176),
+    0 0 40px rgb(61, 121, 176), 0 0 80px rgb(35, 66, 164),
+    0 0 120px rgb(61, 121, 176), 0 0 110px rgb(61, 121, 176);
 }
 
+.customer-form {
+  height: 55vh;
+  width: 400px;
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 1.2em 2.5em;
+}
+form * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.customer-form > h3 {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bolder;
+  line-height: 1em;
+  text-align: center;
+}
+#age {
+  width: 100px;
+}
+.customer-form > label,
+.customer-form > div > div > label {
+  display: block;
+  margin-top: 10px;
+  font-size: 2.2vh;
+  font-weight: bold;
+}
+#gender-title {
+  display: block;
+  margin-top: 10px;
+  font-size: 2.2vh;
+  font-weight: bold;
+}
+.customer-form > input,
+.customer-form > div > div > input {
+  display: block;
+  height: 6vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-size: 2vh;
+  font-weight: 300;
+}
+.button-next,
+.button-prev {
+  font-size: clamp(14px, 3vw, 24px);
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  border: rgb(26, 48, 121) 4px solid;
+  padding: 0.25em 1em;
+  border-radius: 0.25em;
+  background-color: transparent;
+  margin: 30px;
+  box-shadow: inset 0 0 0.5em 0 rgb(26, 48, 121), 0 0 0.5em 0 rgb(26, 48, 121);
 
-.customer-form{
-    height: 55vh;
-    width: 400px;
-    margin-top: 30px;
-    background-color: rgba(255,255,255,0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 1.2em 2.5em ;
+  position: relative;
 }
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
+.button-prev {
+  color: white;
+  border: white 4px solid;
+  box-shadow: inset 0 0 0.1em 0 white, 0 0 0.1em 0 white;
 }
-.customer-form > h3{
-    margin: 0;
-    font-size: 1.3em;
-    font-weight: bolder;
-    line-height: 1em;
-    text-align: center;
-}
-#age{
-    width: 100px;
-}
-.customer-form > label,.customer-form>div>div>label {
-    display: block;
-    margin-top: 10px;
-    font-size: 2.2vh;
-    font-weight: bold;
-}
-#gender-title{
-    display: block;
-    margin-top: 10px;
-    font-size: 2.2vh;
-    font-weight: bold;
-}
-.customer-form > input,.customer-form>div>div>input{
-    display: block;
-    height: 6vh;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 10px;
-    font-size: 2vh;
-    font-weight: 300;
-}
-.button-next, .button-prev{
-	font-size: 1.3em;
-	display: inline-block;
-	cursor: pointer;
-	text-decoration: none;
-	color: white;
-	border: rgb(26, 48, 121) 4px solid;
-	padding: 0.25em 1em;
-	border-radius: 0.25em;
-    background-color: transparent;
-    margin: 30px;
-	box-shadow: inset 0 0 0.5em 0 rgb(26, 48, 121), 0 0 0.5em 0 rgb(26, 48, 121);
-
-	position: relative;
-}
-.button-prev{
-    color: white;
-    border: white 4px solid;
-    box-shadow: inset 0 0 0.1em 0 white, 0 0 0.1em 0 white;
-}
-
 
 .button-next:hover,
-.button-prev:hover{
-	color:  white;
-	text-shadow: none;
-    /* border: none; */
-    border: rgb(26, 48, 121) 4px solid;
-    background-color: rgb(26, 48, 121);
-	text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.125em currentColor;
-    transition: 0.5s linear all;
+.button-prev:hover {
+  color: white;
+  text-shadow: none;
+  /* border: none; */
+  border: rgb(26, 48, 121) 4px solid;
+  background-color: rgb(26, 48, 121);
+  text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.125em currentColor;
+  transition: 0.5s linear all;
 }
-.button-prev:hover{
-	color:  rgb(26, 48, 121);
-    border: white 4px solid;
-    background-color: white;
-	
+.button-prev:hover {
+  color: rgb(26, 48, 121);
+  border: white 4px solid;
+  background-color: white;
 }
 
-::placeholder{
-    color: #e5e5e5d8;
+::placeholder {
+  color: #e5e5e5d8;
 }

@@ -26,22 +26,19 @@ const NewBooking = () => {
   const [rooms, setRooms] = useState(0);
   const [roomNumbers, setRoomNumbers] = useState([]);
   const handleCreateCustomer = () => {
-    fetch(
-      "https://hotel-delta-management-midul9797.vercel.app/api/v1/customers/create-customer",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          age: parseInt(age),
-          address,
-          gender,
-        }),
-      }
-    )
+    fetch("http://localhost:3000/api/v1/customers/create-customer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        phone,
+        age: parseInt(age),
+        address,
+        gender,
+      }),
+    })
       .then((res) => res.json())
       .then((d) => {
         if (d.success) handleCreateRoom();

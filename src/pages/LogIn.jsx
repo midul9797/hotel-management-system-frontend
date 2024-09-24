@@ -13,12 +13,9 @@ export default function LogIn() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch(
-      `https://hotel-delta-management-midul9797.vercel.app/api/v1/admins/${username}`,
-      {
-        method: "GET",
-      }
-    )
+    fetch(`http://localhost:3000/api/v1/admins/${username}`, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((d) => {
         setData(d);
@@ -79,8 +76,8 @@ export default function LogIn() {
                 L o <span className="login-faulty-letter">g </span>I n
               </span>
             </button>
-            <p>
-              Dont have an account?{" "}
+            <p style={{ fontSize: "clamp(12px, 1.5vw, 18px)" }}>
+              Don&apos;t have an account?{" "}
               <Link
                 to="/sign-up"
                 style={{ fontWeight: "bold", textDecoration: "underline" }}

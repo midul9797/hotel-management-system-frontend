@@ -10,9 +10,7 @@ export default function CheckOut() {
   const [bill, setBill] = useState(0);
   const handleSearch = () => {
     setDeleteMsg(false);
-    fetch(
-      `https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings/${phone}`
-    )
+    fetch(`http://localhost:3000/api/v1/bookings/${phone}`)
       .then((res) => res.json())
       .then((d) => {
         if (d.data === data) setData(null);
@@ -48,12 +46,9 @@ export default function CheckOut() {
   };
   const handleCancel = () => {
     if (!data) handleSearch();
-    fetch(
-      `https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings/${phone}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`http://localhost:3000/api/v1/bookings/${phone}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((d) => {
         if (d.data.length !== 0) {

@@ -2,177 +2,176 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 .table-body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   width: 100vw;
   height: 100vh;
-  
+  overflow-x: hidden;
   margin: 0;
-overflow-y: scroll;
+  overflow-y: scroll;
   line-height: 1.42em;
-  color:whitesmoke;
-  background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+  color: whitesmoke;
+  background: linear-gradient(
+    109.6deg,
+    rgb(61, 121, 176) 11.3%,
+    rgb(35, 66, 164) 91.1%
+  );
   /* background-color:black;
   background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed; */
 }
-.bookings-title{
-    font-weight: bold;
-	  font-size: 3em;
+.bookings-title {
+  font-weight: bold;
+  font-size: clamp(16px, 4vw, 32px);
   text-align: left;
   color: white;
-  text-shadow: 0 0 10px rgb(61, 121, 176),
-  0 0 20px rgb(61, 121, 176),
-  0 0 40px rgb(61, 121, 176),
-  0 0 80px rgb(35, 66, 164),
-  0 0 120px rgb(61, 121, 176),
-  0 0 110px rgb(61, 121, 176);
+  text-shadow: 0 0 10px rgb(61, 121, 176), 0 0 20px rgb(61, 121, 176),
+    0 0 40px rgb(61, 121, 176), 0 0 80px rgb(35, 66, 164),
+    0 0 120px rgb(61, 121, 176), 0 0 110px rgb(61, 121, 176);
 }
-.search-box{
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    margin: 30px 0;
-  }
-  .input-search{
-    height: 30px;
-    width: 30px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 50%;
-    transition: all .5s ease-in-out;
-    background-color: rgb(26, 48, 121);
-  
-    color:transparent;
-  }
-  .input-search::placeholder{
-    
-    color: transparent;
-    font-size: 14px;
-    letter-spacing: 2px;
-    font-weight: 100;
-  }
-  .btn-search{
-    width: 50px;
-    height: 65px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 7px;
-    color:#ffffff ;
-    background-color:transparent;
-    pointer-events: painted;  
-    
-  }
-  .btn-search:focus ~ .input-search{
-    width: 300px;
-    color: white;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom:1px solid rgba(255,255,255,.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-  .btn-search:focus ~ .input-search::placeholder{color: rgba(255,255,255,.5);}
-  .input-search:focus{
-    width: 300px;
-    color: white;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom:1px solid rgba(255,255,255,.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-  
-  
+.search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: 30px 0;
+}
+.input-search {
+  height: 30px;
+  width: 30px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  background-color: rgb(26, 48, 121);
+
+  color: transparent;
+}
+.input-search::placeholder {
+  color: transparent;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search {
+  width: 50px;
+  height: 65px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 7px;
+  color: #ffffff;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search {
+  width: 300px;
+  color: white;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.btn-search:focus ~ .input-search::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.input-search:focus {
+  width: 300px;
+  color: white;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
 
 .table-container th h1 {
-	  font-weight: bold;
-	  font-size: 1em;
+  font-weight: bold;
+  font-size: 1em;
   text-align: left;
   color: white;
-  text-shadow: 0 0 10px rgb(61, 121, 176),
-  0 0 20px rgb(61, 121, 176),
-  0 0 40px rgb(61, 121, 176),
-  0 0 80px rgb(35, 66, 164),
-  0 0 120px rgb(61, 121, 176),
-  0 0 110px rgb(61, 121, 176);
-  
+  text-shadow: 0 0 10px rgb(61, 121, 176), 0 0 20px rgb(61, 121, 176),
+    0 0 40px rgb(61, 121, 176), 0 0 80px rgb(35, 66, 164),
+    0 0 120px rgb(61, 121, 176), 0 0 110px rgb(61, 121, 176);
 }
 
 .table-container td {
-	  font-weight: normal;
-	  font-size: 1em;
-  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
-	        box-shadow: 0 2px 2px -2px #0E1119;
+  font-weight: normal;
+  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0e1119;
+  -moz-box-shadow: 0 2px 2px -2px #0e1119;
+  box-shadow: 0 2px 2px -2px #0e1119;
 }
 
 .table-container {
-	  text-align: left;
-	  overflow: hidden;
-	  width: 80%;
-	  margin: 0 auto;
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
   display: table;
   padding: 0 0 8em 0;
 }
 
-.table-container td, .table-container th {
-	  padding-bottom: 2%;
-	  padding-top: 2%;
-  padding-left:2%;  
+.table-container td,
+.table-container th {
+  padding-bottom: 2%;
+  padding-top: 2%;
+  padding-left: 2%;
 }
 
 /* Background-color of the odd rows */
 
 .table-container tbody tr:nth-child(odd) {
-	  /* background-color: #323C50; */
-      backdrop-filter: blur(5px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgb(26, 48, 121);
+  /* background-color: #323C50; */
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgb(26, 48, 121);
 }
 
 /* Background-color of the even rows */
 .table-container tbody tr:nth-child(even) {
-    backdrop-filter: blur(5px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(24, 14, 14, 0.658);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(24, 14, 14, 0.658);
 }
 
-
-
-.table-container  td:first-child { color: cyan; }
+.table-container td:first-child {
+  color: cyan;
+}
 
 .table-container tbody tr:hover {
-   background-color: rgb(20, 37, 94);
--webkit-box-shadow: 0 6px 6px -6px #0E1119;
-	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-	        box-shadow: 0 6px 6px -6px #0E1119;
+  background-color: rgb(20, 37, 94);
+  -webkit-box-shadow: 0 6px 6px -6px #0e1119;
+  -moz-box-shadow: 0 6px 6px -6px #0e1119;
+  box-shadow: 0 6px 6px -6px #0e1119;
 }
-
 
 .table-container td:hover {
   background-color: rgb(26, 48, 121);
   color: whitesmoke;
   font-weight: bold;
-  
-  box-shadow: rgb(20, 37, 94) -1px 1px, rgb(20, 37, 94) -2px 2px, rgb(20, 37, 94) -3px 3px, rgb(20, 37, 94) -4px 4px, rgb(20, 37, 94) -5px 5px, rgb(20, 37, 94) -6px 6px;
+
+  box-shadow: rgb(20, 37, 94) -1px 1px, rgb(20, 37, 94) -2px 2px,
+    rgb(20, 37, 94) -3px 3px, rgb(20, 37, 94) -4px 4px, rgb(20, 37, 94) -5px 5px,
+    rgb(20, 37, 94) -6px 6px;
   transform: translate3d(6px, -6px, 0);
-  
+
   transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
+  transition-duration: 0.4s;
+  transition-property: all;
   transition-timing-function: line;
 }
 
 @media (max-width: 700px) {
-.table-container td:nth-child(4),
-.table-container th:nth-child(4) { display: none; }
+  .table-container td:nth-child(4),
+  .table-container th:nth-child(4) {
+    display: none;
+  }
 }

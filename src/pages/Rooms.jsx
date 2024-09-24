@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function Rooms() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(`https://hotel-delta-management-midul9797.vercel.app/api/v1/rooms`, {
+    fetch(`http://localhost:3000/api/v1/rooms`, {
       method: "GET",
     })
       .then((res) => res.json())
