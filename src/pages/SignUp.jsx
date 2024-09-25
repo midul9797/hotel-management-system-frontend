@@ -3,17 +3,20 @@ import "../styles/LogIn.css";
 import "../styles/SignUp.css";
 import { Alert } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
 export default function SignUp() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const router = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (code.toLowerCase() === "dbms") {
-      fetch("http://localhost:3000/api/v1/admins/create-admin", {
+      fetch(`${import.meta.env.VITE_URL}admins/create-admin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,9 +27,10 @@ export default function SignUp() {
         .then((data) => {
           if (data?.success === true) {
             setSuccess("Successful");
-            router("/", { replace: true });
+            router("/login", { replace: true });
           } else setSuccess("Something went wrong try again");
-        });
+        })
+        .finally(() => setLoading(false));
     }
   };
   return (
@@ -73,9 +77,13 @@ export default function SignUp() {
 
         <div className="login-btn-box" style={{ padding: "1vw" }}>
           <button className="login-glowing-btn" onClick={handleSignUp}>
-            <span className="login-glowing-txt">
-              S i <span className="login-faulty-letter">g n </span>U p
-            </span>
+            {loading ? (
+              <LoadingOutlined />
+            ) : (
+              <span className="login-glowing-txt">
+                S i <span className="login-faulty-letter">g n </span>U p
+              </span>
+            )}
           </button>
           <p style={{ fontSize: "clamp(12px, 1.5vw, 18px)" }}>
             Already have an account?{" "}

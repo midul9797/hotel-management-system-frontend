@@ -1,25 +1,37 @@
 import { useState } from "react";
 import "../styles/LogIn.css";
-import { Alert } from "antd";
+import { Alert, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
 
 export default function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState(null);
   const [success, setSuccess] = useState("");
   const [changed, setChanged] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = (e, type) => {
+    let url, pass;
     e.preventDefault();
-    fetch(`http://localhost:3000/api/v1/admins/${username}`, {
+    setLoading(true);
+    if (type === "auto") {
+      url = `${import.meta.env.VITE_URL}admins/admin`;
+      pass = "1234";
+    } else {
+      url = `${import.meta.env.VITE_URL}admins/${username}`;
+    }
+    fetch(url, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((d) => {
-        setData(d);
-        if (password === data?.data[0]?.password) {
+        if (
+          password === d?.data[0]?.password ||
+          pass === d?.data[0]?.password
+        ) {
+          pass = "";
           setChanged(!changed);
           setSuccess("Successful");
           localStorage.setItem("isLoggedIn", true);
@@ -28,7 +40,8 @@ export default function LogIn() {
           setSuccess("Something went wrong try again");
           setChanged(!changed);
         }
-      });
+      })
+      .finally(() => setLoading(false));
   };
   return (
     <>
@@ -71,10 +84,17 @@ export default function LogIn() {
           />
 
           <div className="login-btn-box">
-            <button className="login-glowing-btn" onClick={handleLogin}>
-              <span className="login-glowing-txt">
-                L o <span className="login-faulty-letter">g </span>I n
-              </span>
+            <button
+              className="login-glowing-btn"
+              onClick={(e) => handleLogin(e, "manual")}
+            >
+              {loading ? (
+                <LoadingOutlined />
+              ) : (
+                <span className="login-glowing-txt">
+                  L o <span className="login-faulty-letter">g </span>I n
+                </span>
+              )}
             </button>
             <p style={{ fontSize: "clamp(12px, 1.5vw, 18px)" }}>
               Don&apos;t have an account?{" "}
@@ -87,6 +107,17 @@ export default function LogIn() {
             </p>
           </div>
         </form>
+        <Button
+          size="large"
+          style={{
+            color: "white",
+            fontSize: "clamp(12px, 1.5vw, 18px)",
+            marginTop: "clamp(10px,2vw,20px",
+          }}
+          onClick={(e) => handleLogin(e, "auto")}
+        >
+          Auto Login
+        </Button>
       </div>
     </>
   );

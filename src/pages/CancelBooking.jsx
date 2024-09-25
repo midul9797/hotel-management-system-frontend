@@ -1,4 +1,4 @@
-import { SearchOutlined } from "@ant-design/icons";
+import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import "../styles/CancelBooking.css";
 import { useState } from "react";
 import { Alert, Popconfirm } from "antd";
@@ -8,18 +8,20 @@ export default function CancelBooking() {
   const [phone, setPhone] = useState("");
   const [data, setData] = useState(null);
   const [deleteMsg, setDeleteMsg] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSearch = () => {
     setDeleteMsg(false);
-    fetch(`http://localhost:3000/api/v1/bookings/${phone}`)
+    fetch(`${import.meta.env.VITE_URL}bookings/${phone}`)
       .then((res) => res.json())
       .then((d) => {
         setData(d.data);
       });
   };
   const handleCancel = () => {
+    setLoading(true);
     if (!data) handleSearch();
-    fetch(`http://localhost:3000/api/v1/bookings/${phone}`, {
+    fetch(`${import.meta.env.VITE_URL}bookings/${phone}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -28,6 +30,7 @@ export default function CancelBooking() {
         if (d.success) {
           setDeleteMsg(true);
           setData(null);
+          setLoading(false);
           setTimeout(() => {
             navigate("/home");
           }, 2000);
@@ -56,7 +59,7 @@ export default function CancelBooking() {
       )}
       <h1
         className="bookings-title"
-        style={{ margin: "15px", fontSize: "2.5em" }}
+        style={{ margin: "15px", fontSize: "clamp(20px, 4vw, 32px)" }}
       >
         CANCEL BOOKING
       </h1>
@@ -89,8 +92,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Customer Name : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Customer Name :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.name}
             </span>
           </div>
@@ -104,8 +115,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Phone NO. : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Phone NO. :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.phone}
             </span>
           </div>
@@ -118,8 +137,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Age: </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Age:{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.age}
             </span>
           </div>
@@ -132,8 +159,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Gender : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Gender :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.gender}
             </span>
           </div>
@@ -146,8 +181,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Rooms: </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Rooms:{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.rooms}
             </span>
           </div>
@@ -160,8 +203,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Staying Days : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Staying Days :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.days}
             </span>
           </div>
@@ -174,8 +225,17 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms"> Room Type : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              {" "}
+              Room Type :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.room_type}
             </span>
           </div>
@@ -189,8 +249,16 @@ export default function CancelBooking() {
               margin: "5px",
             }}
           >
-            <span htmlFor="brooms">Bed Type : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              htmlFor="brooms"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)" }}
+            >
+              Bed Type :{" "}
+            </span>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: 0 }}
+            >
               {data[0]?.bed_type}
             </span>
           </div>
@@ -203,8 +271,11 @@ export default function CancelBooking() {
         okText="Yes"
         cancelText="No"
       >
-        <button className="button-next" style={{ fontSize: "18px" }}>
-          Cancel Booking
+        <button
+          className="button-next"
+          style={{ fontSize: "clamp(16px, 2vw, 24px)" }}
+        >
+          {loading ? <LoadingOutlined /> : "Cancel Booking"}
         </button>
       </Popconfirm>
     </div>

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 .cancel-body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   width: 100vw;
   height: 100vh;
@@ -9,24 +9,27 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-overflow-y: scroll;
+
+  overflow-y: scroll;
   line-height: 1.42em;
   color: white;
-  background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+  background: linear-gradient(
+    109.6deg,
+    rgb(61, 121, 176) 11.3%,
+    rgb(35, 66, 164) 91.1%
+  );
   /* background-color:black;
   background-image: url('../assets/loginBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed; */
 }
-.cancel-details{
-    height: 50vh;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding:  20px 40px;
+.cancel-details {
+  width: clamp(230px, 30vw, 400px);
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 40px);
 }

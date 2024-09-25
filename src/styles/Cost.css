@@ -1,3 +1,15 @@
-.cost-container td:first-child { color: #A7A1AE; }
-.cost-container td:first-child:hover { color: white; }
-.cost-container td:nth-child(3) { color: cyan; }
+.cost-container td:first-child {
+  color: #a7a1ae;
+}
+.cost-container td:first-child:hover {
+  color: white;
+}
+.cost-container td:nth-child(3) {
+  color: cyan;
+}
+@media (max-width: 480px) {
+  .cost-container td:nth-child(3),
+  .cost-container th:nth-child(3) {
+    display: block;
+  }
+}

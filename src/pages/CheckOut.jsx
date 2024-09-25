@@ -1,4 +1,4 @@
-import { SearchOutlined } from "@ant-design/icons";
+import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import "../styles/CancelBooking.css";
 import { useState } from "react";
 import { Alert, Popconfirm } from "antd";
@@ -8,9 +8,9 @@ export default function CheckOut() {
   const [data, setData] = useState(null);
   const [deleteMsg, setDeleteMsg] = useState(false);
   const [bill, setBill] = useState(0);
+  const [loading, setLoading] = useState(false);
   const handleSearch = () => {
-    setDeleteMsg(false);
-    fetch(`http://localhost:3000/api/v1/bookings/${phone}`)
+    fetch(`${import.meta.env.VITE_URL}bookings/${phone}`)
       .then((res) => res.json())
       .then((d) => {
         if (d.data === data) setData(null);
@@ -45,15 +45,18 @@ export default function CheckOut() {
       });
   };
   const handleCancel = () => {
+    setLoading(true);
     if (!data) handleSearch();
-    fetch(`http://localhost:3000/api/v1/bookings/${phone}`, {
+    fetch(`${import.meta.env.VITE_URL}bookings/${phone}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((d) => {
-        if (d.data.length !== 0) {
+        if (d.success) {
           setDeleteMsg(true);
           setData(null);
+          setBill(0);
+          setLoading(false);
         }
       });
     // fetch(
@@ -80,9 +83,10 @@ export default function CheckOut() {
           type="success"
           message="Checked Out Successfully"
           closable
+          onClose={() => setDeleteMsg(false)}
         />
       )}
-      {data && data.length === 0 && (
+      {!deleteMsg && data != null && data.length === 0 && (
         <Alert
           style={{ marginTop: "30px" }}
           showIcon
@@ -127,8 +131,11 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Customer Name : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
-              {data[0]?.name}
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
+              {data && data[0]?.name}
             </span>
           </div>
 
@@ -142,7 +149,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Phone NO. : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.phone}
             </span>
           </div>
@@ -156,7 +166,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Age: </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.age}
             </span>
           </div>
@@ -170,7 +183,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Gender : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.gender}
             </span>
           </div>
@@ -184,7 +200,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Rooms: </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.rooms}
             </span>
           </div>
@@ -198,7 +217,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Staying Days : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.days}
             </span>
           </div>
@@ -212,7 +234,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms"> Room Type : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.room_type}
             </span>
           </div>
@@ -227,7 +252,10 @@ export default function CheckOut() {
             }}
           >
             <span htmlFor="brooms">Bed Type : </span>
-            <span className="bookings-title" style={{ fontSize: "14px" }}>
+            <span
+              className="bookings-title"
+              style={{ fontSize: "clamp(12px, 2vw, 16px)", margin: "0" }}
+            >
               {data[0]?.bed_type}
             </span>
           </div>
@@ -241,7 +269,10 @@ export default function CheckOut() {
           >
             <span
               className="bookings-title"
-              style={{ fontSize: "20px", margin: "30px" }}
+              style={{
+                fontSize: "clamp(16px, 2vw, 20px)",
+                margin: "30px",
+              }}
             >
               Total Bill: {bill} &#2547;
             </span>
@@ -255,8 +286,11 @@ export default function CheckOut() {
         okText="Yes"
         cancelText="No"
       >
-        <button className="button-next" style={{ fontSize: "18px" }}>
-          Check Out
+        <button
+          className="button-next"
+          style={{ fontSize: "clamp(16px, 2vw, 18px)" }}
+        >
+          {loading ? <LoadingOutlined /> : "Check Out"}
         </button>
       </Popconfirm>
     </div>

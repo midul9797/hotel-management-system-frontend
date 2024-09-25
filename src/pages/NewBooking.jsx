@@ -25,8 +25,9 @@ const NewBooking = () => {
   const [days, setDays] = useState(0);
   const [rooms, setRooms] = useState(0);
   const [roomNumbers, setRoomNumbers] = useState([]);
+  const [loading, setLoading] = useState(false);
   const handleCreateCustomer = () => {
-    fetch("http://localhost:3000/api/v1/customers/create-customer", {
+    fetch(`${import.meta.env.VITE_URL}customers/create-customer`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,20 +43,20 @@ const NewBooking = () => {
       .then((res) => res.json())
       .then((d) => {
         if (d.success) handleCreateRoom();
-        else alert("Phone Number Already Exists");
+        else {
+          alert("Phone Number Already Exists");
+          setLoading(false);
+        }
       });
   };
   const handleCreateRoom = () => {
-    fetch(
-      `https://hotel-delta-management-midul9797.vercel.app/api/v1/rooms/${roomType}/${bedType}/${rooms}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ customer_phone: phone }),
-      }
-    )
+    fetch(`${import.meta.env.VITE_URL}rooms/${roomType}/${bedType}/${rooms}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ customer_phone: phone }),
+    })
       .then((res) => res.json())
       .then((d) => {
         setRoomNumbers(d.data);
@@ -63,23 +64,20 @@ const NewBooking = () => {
       });
   };
   const handleCreateBooking = (r) => {
-    fetch(
-      "https://hotel-delta-management-midul9797.vercel.app/api/v1/bookings/create-booking",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          room_type: roomType,
-          rooms: parseInt(rooms),
-          bed_type: bedType,
-          customer_phone: phone,
-          days: parseInt(days),
-          roomNumbers: r,
-        }),
-      }
-    )
+    fetch(`${import.meta.env.VITE_URL}bookings/create-booking`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        room_type: roomType,
+        rooms: parseInt(rooms),
+        bed_type: bedType,
+        customer_phone: phone,
+        days: parseInt(days),
+        roomNumbers: r,
+      }),
+    })
       .then((res) => res.json())
       .then((d) => {
         console.log(
@@ -96,6 +94,7 @@ const NewBooking = () => {
           setCurrent({ a: "done", b: current.b + 1 });
           setConfirmation("finish");
           setDone("finish");
+          setLoading(false);
         }
       });
   };
@@ -110,8 +109,11 @@ const NewBooking = () => {
       rooms &&
       bedType
     ) {
+      setLoading(true);
       fetch(
-        `https://hotel-delta-management-midul9797.vercel.app/api/v1/rooms/count-room/${roomType}/${bedType}/${rooms}`,
+        `${
+          import.meta.env.VITE_URL
+        }rooms/count-room/${roomType}/${bedType}/${rooms}`,
         {
           method: "GET",
         }
@@ -122,9 +124,12 @@ const NewBooking = () => {
 
           if (d.data === true) {
             handleCreateCustomer();
-          } else alert("No Room Available");
+          } else {
+            alert("No Room Available");
+            setLoading(false);
+          }
         });
-    }
+    } else alert("Please Fill All Fields");
   };
   const steps = [
     {
@@ -215,14 +220,7 @@ const NewBooking = () => {
             id="rooms"
             onBlur={(e) => setRooms(e.target.value)}
           />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "25vh",
-            }}
-          >
+          <div className="room-type">
             <div>
               <p htmlFor="gender-title" id="gender-title">
                 Room Type
@@ -231,11 +229,7 @@ const NewBooking = () => {
               <Radio.Group
                 onChange={(e) => setRoomType(e.target.value)}
                 value={roomType}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                className="radio-group"
               >
                 <Radio value={"AC"} style={{ fontWeight: "normal" }}>
                   AC
@@ -253,11 +247,7 @@ const NewBooking = () => {
               <Radio.Group
                 onChange={(e) => setBedType(e.target.value)}
                 value={bedType}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                className="radio-group"
               >
                 <Radio value={"Single"} style={{ fontWeight: "normal" }}>
                   Single
@@ -546,7 +536,7 @@ const NewBooking = () => {
           )}
           {current.b === steps.length - 2 && (
             <button className="button-next" onClick={() => next()}>
-              Confirm
+              {loading ? <LoadingOutlined /> : "Confirm"}
             </button>
           )}
           {current.b > 0 && current.b < 3 && (

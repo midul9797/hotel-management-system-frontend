@@ -1,16 +1,20 @@
 import { Col, Row } from "antd";
 import "../styles/Rooms.css";
 import { useEffect, useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 export default function Rooms() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/rooms`, {
+    setLoading(true);
+    fetch(`${import.meta.env.VITE_URL}rooms`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((d) => {
         setData(d.data);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
   return (
     <div className="rooms-body">
@@ -18,7 +22,7 @@ export default function Rooms() {
         <h1 className="room-title">Rooms</h1>
       </div>
       <Row
-        style={{ width: "80vw", marginBottom: "30px" }}
+        style={{ width: "90vw", marginBottom: "30px" }}
         gutter={{
           xs: 8,
           sm: 16,
@@ -26,6 +30,20 @@ export default function Rooms() {
           lg: 32,
         }}
       >
+        {loading && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "70vh",
+              fontSize: "20px",
+            }}
+          >
+            <LoadingOutlined />
+          </div>
+        )}
         {data.map((room) => (
           <Col
             key={room}
